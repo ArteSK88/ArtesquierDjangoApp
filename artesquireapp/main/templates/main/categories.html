@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load mptt_tags %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<div class="side">
+<ul class="menu">
+    {% recursetree categories %}
+        <li>
+            {% if node.is_leaf_node %}
+            <a>{{ node.name }}</a>
+            {% else %}
+            <a  href="/categories/{{ node.id }}/{{ node.slug }}">{{ node.name }}</a>
+            {% endif %}
+            {% if not node.is_leaf_node %}
+                <ul class="menu_children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+</div>
+{% endblock %}

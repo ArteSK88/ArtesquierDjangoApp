@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load mptt_tags %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<div class="side">
+<ul class="menu">
+    {% recursetree categories %}
+        {% if node.id == category_id %}
+        <li class="parent--active_{{node.mptt_level}} active">
+            {% if node.is_leaf_node %}
+            <a>{{ node.name }}</a>
+            {% else %}
+            <a  href="/categories/{{ node.id }}/{{ node.slug }}">{{ node.name }}</a>
+            {% endif %}
+            {% if not node.is_leaf_node %}
+                <ul class="children--active_{{node.mptt_level}} active">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+        {% else %}
+                <li class="parent_{{node.mptt_level}}">
+            {% if node.is_leaf_node %}
+            <a>{{ node.name }}</a>
+            {% else %}
+            <a  href="/categories/{{ node.id }}/{{ node.slug }}">{{ node.name }}</a>
+            {% endif %}
+            {% if not node.is_leaf_node %}
+                <ul class="children_{{node.mptt_level}}">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endif %}
+    {% endrecursetree %}
+</ul>
+</div>
+{% endblock %}

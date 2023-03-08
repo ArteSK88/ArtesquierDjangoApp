@@ -1,0 +1,50 @@
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+.menu{
+    width: 300px;
+}
+
+.menu a{
+    background: #0c062e;
+    color: #e3e1e9;
+    font-weight: 550;
+    display: block;
+    border-radius: 6px;
+    margin: 1px;
+    padding: 10px;
+    transition: 0.3s all;
+}
+
+.menu a:hover {
+    background: #0a066c;
+    padding: 10px 0 10px 15px;
+}
+
+.active a{
+    color: orange;
+}
+
+.parent_1 .children_2 a{
+    background: yellow;
+    display: none;
+}
+
+.children_1 .parent_2{
+    background: yellow;
+    display: none;
+}
+
+.children--active_1 .parent_3 a{
+    background: yellow;
+    display: none;
+}
+
+ul .menu_children {
+    display: none;
+}
